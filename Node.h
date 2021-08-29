@@ -12,6 +12,7 @@ class Node
 		std::string ADescription;
 		std::string BDescription;
 		std::string CDescription;
+		bool bIsGameOver;
 	public:
 		Node();
 		//CNode is optional
@@ -20,5 +21,6 @@ class Node
 		~Node();
 		//virtual because this function will be overwritten by child classes.
 		virtual Node* process();
+		bool getGameOver();
 };
 

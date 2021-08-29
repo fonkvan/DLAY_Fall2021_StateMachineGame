@@ -50,7 +50,9 @@ void CombatNode::CombatCalculation()
 {
 	std::srand(std::time(NULL));
 	playerHP = playerHP - (std::rand() % eDMGRange);
+	std::cout << "You lost %i HP!" << playerHP << std::endl;
 	eHP = eHP - (std::rand() % playerDMGRange);
+	std::cout << "You dealt %i damage to the enemy!" << std::endl;
 	if (playerHP <= 0)
 	{
 		std::cout << "You lose!" << std::endl;

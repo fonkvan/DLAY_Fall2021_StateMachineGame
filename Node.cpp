@@ -11,6 +11,7 @@ Node::Node()
 	Node::ANode = nullptr;
 	Node::BNode = nullptr;
 	Node::CNode = nullptr;
+	Node::bIsGameOver = false;
 }
 
 Node::Node(std::string ThisNodeDescription, std::string ADescription, std::string BDescription, std::string CDescription, 
@@ -23,6 +24,7 @@ Node::Node(std::string ThisNodeDescription, std::string ADescription, std::strin
 	Node::ANode = ANode;
 	Node::BNode = BNode;
 	Node::CNode = CNode;
+	Node::bIsGameOver = false;
 }
 
 Node::~Node(){}
@@ -66,4 +68,9 @@ Node* Node::process()
 		std::cout << "You did not enter valid option. Restarting this node.";
 		return this;
 	}
+}
+
+bool Node::getGameOver()
+{
+	return Node::bIsGameOver;
 }
