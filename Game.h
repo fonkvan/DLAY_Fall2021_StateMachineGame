@@ -8,7 +8,6 @@ class Game
 {
 	private:
 		Node* currentNode;
-		Node* startNode;
 		CombatNode* Combat;
 		GameOverNode* GameOver;
 	public:
@@ -16,5 +15,6 @@ class Game
 		~Game();
 		void PlayGame();
 		void SampleGame();
+		Node* startNode;
 };
 

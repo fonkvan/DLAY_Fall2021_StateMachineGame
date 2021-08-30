@@ -13,6 +13,7 @@ GameOverNode::GameOverNode(std::string ThisNodeDescription)
 
 Node* GameOverNode::process()
 {
+	std::cout << ThisNodeDescription << std::endl;
 	Node::bIsGameOver = true;
 	return this;
 }

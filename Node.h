@@ -1,13 +1,14 @@
 #pragma once
 
 #include <string>
-
+class GameOverNode;
 class Node
 {
 	protected:
 		Node* ANode;
 		Node* BNode;
 		Node* CNode;
+		GameOverNode* GameOver;
 		std::string ThisNodeDescription;
 		std::string ADescription;
 		std::string BDescription;

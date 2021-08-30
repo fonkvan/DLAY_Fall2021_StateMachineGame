@@ -1,6 +1,7 @@
 #include "Node.h"
 #include <iostream>
 #include <locale>
+#include "GameOverNode.h"
 
 Node::Node()
 {
@@ -39,7 +40,10 @@ Node* Node::process()
 	std::cout <<std::endl;
 	std::cout << "A) " << ADescription << std::endl;
 	std::cout << "B) " << BDescription << std::endl;
-
+	if (this == nullptr)
+	{
+		return GameOver = new GameOverNode("nullptr exception thrown. Ending Game.");
+	}
 	if (CNode != nullptr)
 	{
 		bCIsOption = true;
