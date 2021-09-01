@@ -1,6 +1,5 @@
 #include "Node.h"
 #include <iostream>
-#include <locale>
 #include <string>
 #include "GameOverNode.h"
 
@@ -34,37 +33,7 @@ void Node::InitializeN(std::string ThisNodeDescription, std::string ADescription
 Node* Node::process()
 {
 	PrintDescriptions();
-	std::string input;
-	std::locale locale;
-	
-	std::cin >> input;
-	for (char letter : input)
-	{
-		std::toupper(letter, locale);
-	}
-	if (input == "A" || input == "a")
-	{
-		if (ANode != nullptr)
-		{
-			return ANode;
-		}
-	}
-	if (input == "B" || input == "b")
-	{
-		if (BNode != nullptr)
-		{
-			return BNode;
-		}
-	}
-	if ((input == "C" || input == "c") && bCIsOption)
-	{
-		return CNode;
-	}
-	else
-	{
-		std::cout << "You did not enter valid option or your option returned a nullptr. Restarting this node.";
-		return this;
-	}
+	return GetNodeFromInput();
 }
 
 bool Node::getGameOver()
@@ -82,5 +51,34 @@ void Node::PrintDescriptions()
 	{
 		bCIsOption = true;
 		std::cout << "C) " << CDescription << std::endl;
+	}
+}
+
+Node* Node::GetNodeFromInput()
+{
+	std::string Input;
+	std::cin >> Input;
+	if (Input == "A" || Input == "a")
+	{
+		if (ANode != nullptr)
+		{
+			return ANode;
+		}
+	}
+	if (Input == "B" || Input == "b")
+	{
+		if (BNode != nullptr)
+		{
+			return BNode;
+		}
+	}
+	if ((Input == "C" || Input == "c") && bCIsOption)
+	{
+		return CNode;
+	}
+	else
+	{
+		std::cout << "You did not enter valid option or your option returned a nullptr. Restarting this node.";
+		return this;
 	}
 }

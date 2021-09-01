@@ -3,11 +3,6 @@
 
 GameOverNode::GameOverNode(){}
 
-//GameOverNode::GameOverNode(std::string ThisNodeDescription)
-//{
-//	GameOverNode::ThisNodeDescription = ThisNodeDescription;
-//}
-
 Node* GameOverNode::process()
 {
 	std::cout << ThisNodeDescription << std::endl;

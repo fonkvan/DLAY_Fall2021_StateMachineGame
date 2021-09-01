@@ -47,28 +47,7 @@ void CombatNode::CombatCalculation()
 	eHP = eHP - DMGToInflict;
 	std::cout << "You dealt " <<  DMGToInflict << " damage to the enemy!" << std::endl;
 	std::cout << "HP: " << playerHP << std::endl;
-	std::cout << std::endl;
-	if (playerHP <= 0)
-	{
-		bPlayerKIA = true;
-		std::cout << "You were killed in action!" << std::endl;
-		std::cout << "What will you do now?" << std::endl;
-		std::cout << std::endl;
-		return;
-	}
-	if (eHP <= 0)
-	{
-		std::cout << "You win!" << std::endl;
-		this->ANode = ChangePointer(ANode, BNode);
-		this->BNode = ChangePointer(BNode, CNode);
-		this->CNode = ChangePointer(CNode, nullptr);
-		this->ADescription = BDescription;
-		this->BDescription = CDescription;
-		this->CDescription = "";
-		return;
-	}
-	std::cout << std::endl;
-	return;
+	return CheckPlayerState();
 }
 
 //StartNode is required and should be the the highest level Node which would allow the player to restart
@@ -125,4 +104,29 @@ Node* CombatNode::ChangePointer(Node* A, Node* B)
 {
 	A = B;
 	return A;
+}
+
+void CombatNode::CheckPlayerState() 
+{
+	if (playerHP <= 0)
+	{
+		bPlayerKIA = true;
+		std::cout << "You were killed in action!" << std::endl;
+		std::cout << "What will you do now?" << std::endl;
+		std::cout << std::endl;
+		return;
+	}
+	if (eHP <= 0)
+	{
+		std::cout << "You win!" << std::endl;
+		this->ANode = ChangePointer(ANode, BNode);
+		this->BNode = ChangePointer(BNode, CNode);
+		this->CNode = ChangePointer(CNode, nullptr);
+		this->ADescription = BDescription;
+		this->BDescription = CDescription;
+		this->CDescription = "";
+		return;
+	}
+	std::cout << std::endl;
+	return;
 }

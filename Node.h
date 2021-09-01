@@ -23,5 +23,6 @@ class Node
 		void InitializeN(std::string ThisNodeDescription, std::string ADescription, std::string BDescription, std::string CDescription,
 			Node* ANode, Node* BNode, Node* CNode = nullptr);
 		void PrintDescriptions();
+		Node* GetNodeFromInput();
 };
 

@@ -37,5 +37,5 @@ class CombatNode : public Node
 			Node* ANode, Node* BNode, Node* StartNode, Node* CNode = nullptr);
 		void ResetDefaults();
 		Node* ChangePointer(Node* A, Node* B);
-		
+		void CheckPlayerState();
 };
