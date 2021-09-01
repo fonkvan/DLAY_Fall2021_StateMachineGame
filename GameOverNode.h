@@ -7,7 +7,8 @@ class GameOverNode : public Node
 		
 	public:
 		GameOverNode();
-		GameOverNode(std::string ThisNodeDescription);
+		//GameOverNode(std::string ThisNodeDescription);
 		virtual Node* process() override;
+		void InitializeG(std::string ThisNodeDescription);
 };
 

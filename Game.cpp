@@ -6,37 +6,31 @@
 
 Game::Game()
 {
-	startNode = nullptr;
-	currentNode = startNode;
-	Combat = nullptr;
-	GameOver = nullptr;
+	startNode = Node();
+	currentNode = &startNode;
+	Combat = CombatNode();
+	GameOver = GameOverNode();
 }
 
-Game::~Game(){}
+//Game::~Game(){}
 
 void Game::PlayGame()
 {
-	if (currentNode == nullptr)
+	while (!currentNode->getGameOver() && currentNode != nullptr)
 	{
-		GameOver = new GameOverNode("nullptr exception thrown. ending game.");
-		GameOver->process();
-	}
-	if (currentNode != nullptr)
-	{
-		while (!currentNode->getGameOver())
-		{
-			currentNode = currentNode->process();
-		}
+		currentNode = currentNode->process();
 	}
 	return;
 }
 
 void Game::SampleGame()
 {
-	Node* TestCNode = new Node("Test C Node", "", "", "", nullptr, nullptr);
-	GameOver = new GameOverNode("This is the Game Over Node");
-	Combat = new CombatNode("This node is the Combat Node", "Fight", "Game Over Node", "Start", 10, 10, 5, 5, Combat, GameOver, startNode);
-	startNode = new Node("This node is the base test node", "Fight Node", "Empty Node", "", Combat, GameOver, TestCNode);
-	currentNode = startNode;
+	Node TestCNode = Node();
+	TestCNode.InitializeN("Test C Node", "", "", "", nullptr, nullptr);
+	GameOver.InitializeG("This is the Game Over Node");
+	Combat.InitializeC("This node is the Combat Node", "Fight", "Game Over Node", "Start Over", "TestCNode", 10, 10, 5, 5,
+	&Combat, &GameOver, &startNode, &TestCNode);
+	startNode.InitializeN("This node is the base test node", "Fight Node", "Game Over Node", "TestCNode", &Combat, &GameOver, &TestCNode);
+	currentNode = &startNode;
 	return;
 }

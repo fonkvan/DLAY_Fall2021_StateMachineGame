@@ -1,6 +1,7 @@
 #include "Node.h"
 #include <iostream>
 #include <locale>
+#include <string>
 #include "GameOverNode.h"
 
 Node::Node()
@@ -13,9 +14,10 @@ Node::Node()
 	Node::BNode = nullptr;
 	Node::CNode = nullptr;
 	Node::bIsGameOver = false;
+	Node::bCIsOption = false;
 }
 
-Node::Node(std::string ThisNodeDescription, std::string ADescription, std::string BDescription, std::string CDescription, 
+void Node::InitializeN(std::string ThisNodeDescription, std::string ADescription, std::string BDescription, std::string CDescription,
 	Node* ANode, Node* BNode, Node* CNode)
 {
 	Node::ThisNodeDescription = ThisNodeDescription;
@@ -28,48 +30,39 @@ Node::Node(std::string ThisNodeDescription, std::string ADescription, std::strin
 	Node::bIsGameOver = false;
 }
 
-Node::~Node(){}
-
+//This processes the Node, 
 Node* Node::process()
 {
-	bool bCIsOption = false;
-
+	PrintDescriptions();
 	std::string input;
 	std::locale locale;
-	std::cout << ThisNodeDescription << std::endl;
-	std::cout <<std::endl;
-	std::cout << "A) " << ADescription << std::endl;
-	std::cout << "B) " << BDescription << std::endl;
-	if (this == nullptr)
-	{
-		return GameOver = new GameOverNode("nullptr exception thrown. Ending Game.");
-	}
-	if (CNode != nullptr)
-	{
-		bCIsOption = true;
-		std::cout << "C) " << CDescription << std::endl;
-	}
 	
 	std::cin >> input;
 	for (char letter : input)
 	{
 		std::toupper(letter, locale);
 	}
-	if (input == "A")
+	if (input == "A" || input == "a")
 	{
-		return ANode;
+		if (ANode != nullptr)
+		{
+			return ANode;
+		}
 	}
-	if (input == "B")
+	if (input == "B" || input == "b")
 	{
-		return BNode;
+		if (BNode != nullptr)
+		{
+			return BNode;
+		}
 	}
-	if (input == "C" && bCIsOption)
+	if ((input == "C" || input == "c") && bCIsOption)
 	{
 		return CNode;
 	}
 	else
 	{
-		std::cout << "You did not enter valid option. Restarting this node.";
+		std::cout << "You did not enter valid option or your option returned a nullptr. Restarting this node.";
 		return this;
 	}
 }
@@ -77,4 +70,17 @@ Node* Node::process()
 bool Node::getGameOver()
 {
 	return Node::bIsGameOver;
+}
+
+void Node::PrintDescriptions()
+{
+	std::cout << ThisNodeDescription << std::endl;
+	std::cout << std::endl;
+	std::cout << "A) " << ADescription << std::endl;
+	std::cout << "B) " << BDescription << std::endl;
+	if (CNode != nullptr)
+	{
+		bCIsOption = true;
+		std::cout << "C) " << CDescription << std::endl;
+	}
 }
