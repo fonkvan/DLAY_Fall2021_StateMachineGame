@@ -1,8 +1,5 @@
 #pragma once
 
-//class Node;
-//class CombatNode;
-//class GameOverNode;
 #include "Node.h"
 #include "CombatNode.h"
 #include "GameOverNode.h"
@@ -11,13 +8,20 @@ class Game
 {
 	private:
 		Node* currentNode;
-		CombatNode Combat;
-		GameOverNode GameOver;
+		Node MakeCamp;
+		Node ContinueOn;
+		Node WaitNode;
+		Node Sneak;
+		CombatNode FightGoblins;
+		GameOverNode GoblinCamp;
+		GameOverNode RunAway;
+		//CombatNode Combat;
+		//GameOverNode GameOver;
 	public:
 		Game();
-		//~Game();
 		void PlayGame();
-		void SampleGame();
+		//void DebugGame();
+		void MainQuest();
 		Node startNode;
 };
 

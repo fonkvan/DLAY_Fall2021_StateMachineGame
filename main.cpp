@@ -3,7 +3,7 @@
 int main()
 {
 	Game MyGame = Game();
-	MyGame.SampleGame();
+	MyGame.MainQuest();
 	MyGame.PlayGame();
 	return 0;
 }
