@@ -24,17 +24,17 @@ class CombatNode : public Node
 		Node* DEFAULTBNode;
 		Node* DEFAULTCNode;
 		Node* StartNode;
+		Node* BattleWon;
+		Node* BattleLost;
 		Node PlayerDied;
 		bool bPlayerKIA;
 	public:
 		CombatNode();
-		///*CombatNode(std::string ThisNodeDescription, std::string ADescription, std::string BDescription, std::string CDescription,
-		//				int playerHP, int eHP, int playerDMGRange, int eDMGRange, Node* ANode, Node* BNode, Node* CNode = nullptr);*/
 		virtual Node* process() override;
 		void CombatCalculation();
 		void InitializeC(std::string ThisNodeDescription, std::string ADescription, std::string BDescription, std::string StartString, 
 			std::string CDescription, int playerHP, int eHP, int playerDMGRange, int eDMGRange, 
-			Node* ANode, Node* BNode, Node* StartNode, Node* CNode = nullptr);
+			Node* ANode, Node* BNode, Node* StartNode, Node* Victory, Node* CNode = nullptr);
 		void ResetDefaults();
 		Node* ChangePointer(Node* A, Node* B);
 		void CheckPlayerState();

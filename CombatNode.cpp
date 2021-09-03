@@ -16,6 +16,7 @@ CombatNode::CombatNode()
 	CombatNode::ANode = nullptr;
 	CombatNode::BNode = nullptr;
 	CombatNode::CNode = nullptr;
+	CombatNode::BattleWon = nullptr;
 	CombatNode::bPlayerKIA = false;
 }
 
@@ -53,7 +54,7 @@ void CombatNode::CombatCalculation()
 //StartNode is required and should be the the highest level Node which would allow the player to restart
 void CombatNode::InitializeC(std::string ThisNodeDescription, std::string ADescription, std::string BDescription, std::string StartString,
 	std::string CDescription, int playerHP, int eHP, int playerDMGRange, int eDMGRange, 
-	Node* ANode, Node* BNode, Node* StartNode, Node* CNode)
+	Node* ANode, Node* BNode, Node* StartNode, Node* Victory, Node* CNode)
 {
 	KilledInAction.InitializeG("Ending Game.");
 	PlayerDied.InitializeN("What will you do now?", "Start Over", "End Game", "", StartNode, &KilledInAction, nullptr);
@@ -70,6 +71,7 @@ void CombatNode::InitializeC(std::string ThisNodeDescription, std::string ADescr
 	CombatNode::BNode = BNode;
 	CombatNode::StartNode = StartNode;
 	CombatNode::CNode = CNode;
+	CombatNode::BattleWon = Victory;
 	CombatNode::StartString = StartString;
 	DEFAULTThisNodeDescription = ThisNodeDescription;
 	DEFAULTADescription = ADescription;
@@ -119,11 +121,12 @@ void CombatNode::CheckPlayerState()
 	if (eHP <= 0)
 	{
 		std::cout << "You win!" << std::endl;
-		this->ANode = ChangePointer(ANode, BNode);
-		this->BNode = ChangePointer(BNode, CNode);
+		this->ANode = ChangePointer(ANode, BattleWon);
+		this->BNode = ChangePointer(BNode, nullptr);
 		this->CNode = ChangePointer(CNode, nullptr);
-		this->ADescription = BDescription;
-		this->BDescription = CDescription;
+		this->ThisNodeDescription = "You won the battle!";
+		this->ADescription = "Continue on";
+		this->BDescription = "";
 		this->CDescription = "";
 		return;
 	}
