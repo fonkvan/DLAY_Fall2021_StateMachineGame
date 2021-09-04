@@ -11,6 +11,8 @@ class Game
 		CombatNode FightGoblins;
 		GameOverNode GoblinCamp;
 		GameOverNode RunAway;
+		GameOverNode Flee;
+		GameOverNode FightGuard;
 		LinearNode WaitNode;
 		Node* currentNode;
 		Node MakeCamp;
@@ -19,6 +21,9 @@ class Game
 		Node ExitForest;
 		Node River;
 		Node RiverSkip;
+		Node CastleNight;
+		Node Tavern;
+		Node Reason;
 		//CombatNode Combat;
 		//GameOverNode GameOver;
 	public:

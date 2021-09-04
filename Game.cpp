@@ -14,7 +14,12 @@ Game::Game()
 	ExitForest = Node();
 	River = Node();
 	RiverSkip = Node();
+	CastleNight = Node();
+	Tavern = Node();
+	Reason = Node();
 	FightGoblins = CombatNode();
+	FightGuard = GameOverNode();
+	Flee = GameOverNode();
 	GoblinCamp = GameOverNode();
 	RunAway = GameOverNode();
 	WaitNode = LinearNode();
@@ -81,10 +86,36 @@ void Game::MainQuest()
 	FightGoblins.InitializeC("\nThe goblins are aware of your presence and are ready for a fight. Will you battle? Or will you back out"
 								"now?", "Battle the goblins!", "I change my mind. I'm getting out of here!", "Start Over", "",
 								25, 15, 4, 5, &FightGoblins, &RunAway, &startNode, &ExitForest);
+	GoblinCamp.InitializeG("\nYou fought valiantly against the goblins, and took many to the underworld with you. Alas, in the end\n"
+							"you were still bested by these foul foes. The few remaining goblins dance on your carcass before feasting\n"
+							"on you.\n Some comrades back home will consider you a traitor. They'll never learn of what happened, only\n"
+							"knowing you abandoned the realm, and that your message never reached that ruined kingdom. Some will guess\n"
+							"that you were killed by a troll or ogre - something much more powerful than a goblin. Some will still have\n"
+							"faith, that you found something even more dire, and that one day you will return home with news that will change the world.\n"
+							"But we know the truth. You were killed and eaten by goblins. Unfortunate.");
 	ExitForest.InitializeN("\nYou've made it out of the forest. The sun shines brightly now.\n"
-									"As you walk out of the brush you see it - a large"
-									" kingdom surrounded by walls that seem they could touch the sky.\n"
-									"The treck to the kingdom will take the majority of the day. On your way you walk by a river.\n"
-									"The water seems clear. Will you stop to get water? Or will you continue onwards towards the kingdom?",
-									"Stop to get water", "Continue towards the kingdom", "", &River, &RiverSkip);
+							"As you walk out of the brush you see it - a large"
+							" kingdom surrounded by walls that seem they could touch the sky.\n"
+							"The treck to the kingdom will take the majority of the day. On your way you walk by a river.\n"
+							"The water seems clear. Will you stop to get water? Or will you continue onwards towards the kingdom?",
+							"Stop to get water", "Continue towards the kingdom", "", &River, &RiverSkip);
+	River.InitializeN("\nYou stop next to the water and take a few drinks. Refreshing. Hydrating. REJUVINATING. You feel much better.\n"
+							"After getting regaining some strength you continue on to the castle town at the edge of the walled kingdom.\n"
+							"Nothing wonderfully eventful happened along the way, other than a weak bandit that wet himself when you drew your sword.\n"
+							"...\nNevermind that. You've now reached the castle town just as night begins to fall. The lights and bustling from a nearby\n"
+							"tavern draw you in. It may be best to rest for the night. The coming threat is still at least a week away. Though, the message is dire.\n"
+							"Sooner may be better..", "Sooner is better. Go to the king now.", "Rest at the tavern tonight. The king is likely asleep.", "",
+							&CastleNight, &Tavern);
+	CastleNight.InitializeN("\nYou've decided despite the time, you should hurry and deliver the message to the king. This is dire afterall.\n"
+							"As you're approaching the castle, you don't see any guards. Maybe a rotation shift? Strange, but you press onwards.\n"
+							"Just as you're about to open the main door, an arrow whizzes past your head and into the door. \nShocked, you turn around. "
+							"Many guards, armed, stand in front of you. Of course, why would the allow an intruder to get the jump on them. Of course they were hidden.\n"
+							"\"That is your warning. Next time I will not miss. Lay down your arms thief, assassin, whoever you are, or be prepared to lose your life\,\n"
+							"the seeming captain of the guards said to you. There are only two options here. You can try to make them see reason, that you aren't the enemy,\n"
+							"or you can attempt to flee.", "Tell them what's going on", "Flee", "",
+							&Reason, &Flee);
+	Flee.InitializeG("\nYou decide to flee. You burst with a sprint, running as fast as you can to get away. Though you did not make it far before you realized\n"
+							"That the captain was not lying. His next shot did not miss. Nor did the many painful ones after that. After your torment, at least\n"
+							"the royal guard had mercy. The soldiers came to you and prayed for their so-called enemy. Then the mercy ended. They pulled out each arrow\n"
+							"and left you to bleed out and be eaten by rats. You died before you could complete your mission.");
 }
