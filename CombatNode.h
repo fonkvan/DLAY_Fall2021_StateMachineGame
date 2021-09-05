@@ -14,6 +14,7 @@ class CombatNode : public Node
 		int DEFAULTeHP;
 		int DEFAULTplayerDMGRange;
 		int DEFAULTeDMGRange;
+		int LeftOverHP;
 		std::string StartString;
 		std::string DEFAULTThisNodeDescription;
 		std::string DEFAULTADescription;
@@ -38,4 +39,5 @@ class CombatNode : public Node
 		void ResetDefaults();
 		Node* ChangePointer(Node* A, Node* B);
 		void CheckPlayerState();
+		int GetPlayerHP();
 };

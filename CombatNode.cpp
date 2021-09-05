@@ -9,6 +9,7 @@ CombatNode::CombatNode()
 	CombatNode::playerHP = 10;
 	CombatNode::eDMGRange = 5;
 	CombatNode::eHP = 5;
+	CombatNode::LeftOverHP = 0;
 	CombatNode::ThisNodeDescription = "";
 	CombatNode::ADescription = "";
 	CombatNode::BDescription = "";
@@ -128,8 +129,15 @@ void CombatNode::CheckPlayerState()
 		this->ADescription = "Continue on";
 		this->BDescription = "";
 		this->CDescription = "";
+		this->LeftOverHP = playerHP;
 		return;
 	}
 	std::cout << std::endl;
 	return;
+}
+
+//NEVER USED
+int CombatNode::GetPlayerHP()
+{
+	return LeftOverHP;
 }

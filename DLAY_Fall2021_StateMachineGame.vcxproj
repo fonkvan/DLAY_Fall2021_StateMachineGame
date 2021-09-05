@@ -142,6 +142,7 @@
     <ClInclude Include="CombatNode.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOverNode.h" />
+    <ClInclude Include="HealNode.h" />
     <ClInclude Include="LinearNode.h" />
     <ClInclude Include="Node.h" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClCompile Include="CombatNode.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOverNode.cpp" />
+    <ClCompile Include="HealNode.cpp" />
     <ClCompile Include="LinearNode.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />

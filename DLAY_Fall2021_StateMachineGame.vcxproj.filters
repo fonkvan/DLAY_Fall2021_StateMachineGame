@@ -30,6 +30,9 @@
     <ClInclude Include="LinearNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HealNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Node.cpp">
@@ -48,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LinearNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HealNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
