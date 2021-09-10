@@ -109,7 +109,7 @@ void Game::MainQuest()
 							"...\nNevermind that. You've now reached the castle town just as night begins to fall. The lights and bustling from a nearby\n"
 							"tavern draw you in. It may be best to rest for the night. The coming threat is still at least a week away. Though, the message is dire.\n"
 							"Sooner may be better..", "Sooner is better. Go to the king now.", "Rest at the tavern tonight. The king is likely asleep.", "",
-							&CastleNight, &Tavern);
+							&CastleNight, &LateTavern);
 	RiverSkip.InitializeL("\nDespite your exhaustion, you pass the river and continue to the kingdom. About halfway there your vision begins to blur,\n"
 							"and you begin to stumble... You collapse to the ground.", 
 							"You've passed out from exhaustiong and dehydration", &Dehydrate);
